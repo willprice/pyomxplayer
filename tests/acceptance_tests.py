@@ -10,4 +10,4 @@ class AcceptanceTest(unittest.TestCase):
        player.toggle_pause()
        time.sleep(1)
        player.stop()
-       self.assertTrue("Completed playing example without errors")
+       self.assertTrue("Did not complete playing example without errors")
