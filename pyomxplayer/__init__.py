@@ -8,7 +8,7 @@ from pyomxplayer.parser import OMXPlayerParser
 
 
 class OMXPlayer(object):
-    _STATUS_REGEX = re.compile(r'V :\s*([\d.]+).*')
+    _STATUS_REGEX = re.compile(r'A:\s*[\d.]+\s-?([\d.]+).*')
     _DONE_REGEX = re.compile(r'have a nice day.*')
 
     _LAUNCH_CMD = 'omxplayer -s %s %s'
@@ -25,6 +25,8 @@ class OMXPlayer(object):
         self._launch_omxplayer(media_file, args)
         self.parser = _parser(self._process)
         self._monitor_play_position()
+
+        self.position = 0.0
 
         # By default the process starts playing
         self.paused = False
